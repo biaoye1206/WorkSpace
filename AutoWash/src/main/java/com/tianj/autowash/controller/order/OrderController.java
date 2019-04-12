@@ -1,6 +1,4 @@
 package com.tianj.autowash.controller.order;
-
-
 import com.tianj.autowash.basic.ResponseEntity;
 import com.tianj.autowash.constant.ResponseCode;
 import com.tianj.autowash.entity.order.OrderDetail;
