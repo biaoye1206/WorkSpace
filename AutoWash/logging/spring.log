@@ -35,3 +35,4 @@
 2019-04-12 08:58:50.703 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.d.device.DeviceDao.findByServerId  : ====> Parameters: f41ad4e8b5a043cbb38e9205463340e2(String)
 2019-04-12 08:58:50.713 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.d.device.DeviceDao.findByServerId  : <====      Total: 1
 2019-04-12 08:58:50.714 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.dao.server.ServerDao.findById      : <==      Total: 1
+2019-04-12 09:01:34.051 DEBUG 3604 --- [https-jsse-nio-8008-exec-2] com.tianj.autowash.dao.server.ServerDao  : Cache Hit Ratio [com.tianj.autowash.dao.server.ServerDao]: 0.25
