@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.device.DeviceDao">
+    <cache readOnly="true"/>
+    <sql id="fieldColumn">
+        `id`,
+        `facility_id`,
+        `service_station_id`,
+        `del_flag`,
+        `create_date`,
+        `update_date`
+    </sql>
+    <!--增加一条数据-->
+    <insert id="insert">
+        INSERT INTO dev_device (id,
+                                facility_id,
+                                service_station_id)
+        VALUES (#{id},
+                #{facilityId},
+                #{serviceStationId})
+    </insert>
+    <!--删除处理-->
+    <update id="delete">
+        UPDATE dev_device
+        SET del_flag = #{DATA_STATUS_DEL}
+        WHERE id = #{id}
+    </update>
+
+    <update id="update">
+        UPDATE dev_device SET update_date =#{updateDate}
+        <trim suffixOverrides=",">
+            <if test="facilityId != null">
+                facility_id = #{facilityId},
+            </if>
+            <if test="serviceStationId ！= null">
+                service_station_id =#{serviceStationId},
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+    <!--根据id查询一条数据-->
+    <select id="findById" resultType="device" useCache="true">
+        SELECT
+        <include refid="fieldColumn"/>
+        FROM dev_device
+        WHERE id=#{id}
+    </select>
+
+
+    <!--根据硬件id查询数据-->
+    <select id="findByDevId" resultType="device" useCache="true">
+        SELECT
+        <include refid="fieldColumn"/>
+        FROM dev_device
+        WHERE facility_id=#{devId}
+    </select>
+
+    <!---->
+    <select id="findByServerId" resultType="device">
+        SELECT
+        <include refid="fieldColumn"/>
+        FROM dev_device
+        WHERE service_station_id=#{ServiceStationId}
+    </select>
+</mapper>

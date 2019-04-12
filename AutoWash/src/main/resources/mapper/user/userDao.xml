@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.user.UserDao">
+    <sql id="sql_column">
+        `id`,
+        `session_key`,
+        `openid`,
+        `usr_user_info_id`,
+        `session`,
+        `create_date`,
+        `update_date`,
+        `del_flag`
+    </sql>
+
+    <insert id="insert">
+        INSERT INTO usr_user (
+        `id`,
+        `session_key`,
+        `openid`,
+        `usr_user_info_id`,
+        `session`,
+        `create_date`,
+        `update_date`
+        )
+        VALUES(
+        #{id},
+        #{sessionKey},
+        #{openid},
+        #{usrUserInfoId},
+        #{session},
+        #{createDate},
+        #{updateDate}
+        )
+    </insert>
+
+    <update id="delete">
+        UPDATE usr_user
+        SET
+        del_flag = #{DATA_STATUS_DEL}
+        WHERE `id` = #{id}
+    </update>
+
+
+    <update id="update">
+        UPDATE usr_user
+        SET
+        session_key = #{sessionKey},
+        session = #{session},
+        update_date = #{updateDate}
+        <if test="balance != null">
+            ,balance =#{balance}
+        </if>
+        WHERE `id` = #{id}
+    </update>
+
+    <select id="findById" resultType="user">
+        SELECT
+        <include refid="sql_column"/>
+        FROM usr_user
+        WHERE `id` = #{id}
+    </select>
+
+    <select id="findByOpenid" resultType="user">
+        SELECT
+        <include refid="sql_column"/>
+        FROM usr_user
+        WHERE `openid` = #{openid}
+    </select>
+
+    <resultMap id="info" type="user">
+        <id column="id" property="id"/>
+        <association property="userInfo" column="usr_user_info_id"
+                     select="com.tianj.autowash.dao.user.UserInfoDao.findById"/>
+    </resultMap>
+    <select id="findUserBySessionId" resultMap="info">
+        SELECT
+        <include refid="sql_column"/>
+        FROM usr_user
+        WHERE
+        session =#{sessionId}
+    </select>
+</mapper>

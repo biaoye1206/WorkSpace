@@ -1,0 +1,51 @@
+#数据库
+spring:
+  datasource:
+    druid:
+      #       url: jdbc:mysql://localhost:3306/auto_wash?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://119.23.182.172:3306/auto_wash
+      username: auto_wash
+      password: tj0332
+    type: com.alibaba.druid.pool.DruidDataSource
+
+#ehcache缓存
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:config/ehcache.xml
+
+  http:
+    encoding:
+      force-response: true
+      force-request: true
+
+#mybatis
+mybatis:
+  type-aliases-package: com.tianj.autowash.entity
+  mapper-locations: classpath*:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+#server
+server.port: 8008
+server.servlet.context-path: /autowash
+server.ssl.key-store: classpath:config/cntjzz.pfx
+server.ssl.key-store-password: alrU6nTT
+server.ssl.key-store-type: PKCS12
+server.ssl.tomcat.uri-encoding: UTF-8
+server.max-http-header-size: 24KB
+
+
+
+#socket
+socket:
+  port: 8989
+
+#日志
+
+
+logging:
+  level:
+    root: info
+    com.tianj.autowash.dao: debug
+  path: ./logging

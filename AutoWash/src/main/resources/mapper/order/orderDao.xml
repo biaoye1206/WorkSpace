@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.order.OrderDao">
+    <sql id="sql_column">
+        id,
+        usr_user_id,
+        order_amount,
+        pay_amout,
+        usr_coupon_id,
+        order_result,
+        cancel_cause,
+        trade_type,
+        facility_id,
+        service_station_id,
+        transaction_id,
+        create_date,
+        update_date,
+        del_flag
+    </sql>
+    <insert id="weChatInsert">
+        INSERT INTO sys_order (
+        `id`,
+        `usr_user_id`,
+        `order_amount`,
+        `usr_coupon_id`,
+        `facility_id`,
+        `service_station_id`,
+        `trade_type`,
+        `create_date`
+        )
+        VALUES(
+        #{id},
+        #{usrUserId},
+        #{orderAmount},
+        #{usrCouponId},
+        #{facilityId},
+        #{serviceStationId},
+        #{tradeType},
+        #{createDate}
+        )
+    </insert>
+    <insert id="recharge">
+        INSERT INTO sys_order (
+        `id`,
+        `usr_user_id`,
+        `order_amount`,
+        `trade_type`,
+        `create_date`
+        )
+        VALUES(
+        #{id},
+        #{usrUserId},
+        #{orderAmount},
+        #{tradeType},
+        #{createDate}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE sys_order
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="usrUserId != null and usrUserId!= ''">
+                usr_user_id = #{usrUserId},
+            </if>
+            <if test="orderAmount != null and orderAmount!= ''">
+                order_amount = #{orderAmount},
+            </if>
+            <if test="payAmout != null and payAmout!= ''">
+                pay_amout = #{payAmout},
+            </if>
+            <if test="usrCouponId != null and usrCouponId!= ''">
+                usr_coupon_id = #{usrCouponId},
+            </if>
+            <if test="orderResult != null and orderResult!= ''">
+                order_result = #{orderResult},
+            </if>
+            <if test="cancelCause != null and cancelCause!= ''">
+                cancel_cause = #{cancelCause},
+            </if>
+            <if test="facilityId != null and facilityId!= ''">
+                facility_id = #{facilityId},
+            </if>
+            <if test="serviceStationId != null and serviceStationId!= ''">
+                service_station_id = #{serviceStationId},
+            </if>
+            <if test="transactionId != null and transactionId!= ''">
+                transaction_id = #{transactionId},
+            </if>
+            <if test="updateDate != null">
+                update_date = #{updateDate},
+            </if>
+            <if test="usrUserId != null and usrUserId!= ''">
+                usr_user_id = #{usrUserId}
+            </if>
+        </trim>
+        WHERE `id` = #{id}
+    </update>
+
+    <select id="findById" resultType="sysOrder">
+        SELECT
+        <include refid="sql_column"/>
+        FROM sys_order
+        WHERE `id` = #{id}
+    </select>
+
+    <select id="getOrderListByUserId" resultType="sysOrder">
+        SELECT
+        id,order_amount,order_result,trade_type,create_date
+        FROM sys_order
+        WHERE `usr_user_id` = #{usrUserId}
+        order by create_date DESC
+    </select>
+</mapper>

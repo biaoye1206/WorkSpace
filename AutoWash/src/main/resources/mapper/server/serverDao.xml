@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.server.ServerDao">
+    <cache readOnly="true"/>
+    <sql id="fieldColumn">
+        `id`,`name`,`address`,`longitude`,`del_flag`,`latitude`,`create_date`,`update_date`
+    </sql>
+    <!--增加一条数据-->
+    <insert id="insert">
+        INSERT INTO svr_service_station (id,
+                                         name,
+                                         address,
+                                         longitude,
+                                         latitude,
+                                         create_date,
+                                         update_date)
+        VALUES (#{id},
+                #{name},
+                #{address},
+                #{longitude},
+                #{latitude},
+                #{createDate},
+                #{updateDate})
+    </insert>
+    <!--删除处理-->
+    <update id="delete">
+        UPDATE svr_service_station
+        SET del_flag = #{DATA_STATUS_DEL}
+        WHERE id = #{id}
+    </update>
+
+    <update id="update">
+        UPDATE svr_service_station SET update_date =#{updateDate}
+        <trim suffixOverrides=",">
+            <if test="facilityId != null">
+                name = #{name},
+            </if>
+            <if test="address ！= null">
+                address =#{address},
+            </if>
+            <if test="longitude ！= null">
+                longitude =#{longitude},
+            </if>
+            <if test="latitude ！= null">
+                latitude =#{latitude},
+            </if>
+        </trim>
+        WHERE id = #{id}
+    </update>
+
+    <resultMap id="server" type="server">
+        <id column="id" property="id"/>
+        <association property="device" column="id" select="com.tianj.autowash.dao.device.DeviceDao.findByServerId"/>
+    </resultMap>
+    <!--根据id查询一条数据-->
+    <select id="findById" resultMap="server" useCache="true">
+        SELECT
+        <include refid="fieldColumn"/>
+        FROM svr_service_station
+        WHERE id=#{id}
+    </select>
+
+    <!--根据经纬度范围获取数据-->
+    <select id="getServicePointsByScope" resultType="map">
+        SELECT id,
+               longitude,
+               latitude
+        FROM svr_service_station
+        WHERE longitude BETWEEN #{souLon} AND #{norLon}
+          AND latitude BETWEEN #{souLat} AND #{norLat}
+    </select>
+</mapper>

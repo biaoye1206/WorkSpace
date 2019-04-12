@@ -1,0 +1,37 @@
+2019-04-12 08:58:28.238  INFO 3604 --- [main] com.tianj.autowash.AutoWashApplication   : Starting AutoWashApplication on PC-20181203JTRA with PID 3604 (E:\WorkSpace\AutoWash\target\classes started by Administrator in E:\WorkSpace\AutoWash)
+2019-04-12 08:58:28.273  INFO 3604 --- [main] com.tianj.autowash.AutoWashApplication   : No active profile set, falling back to default profiles: default
+2019-04-12 08:58:30.030  INFO 3604 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$218a3006] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-12 08:58:30.562  INFO 3604 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8008 (https) 8011 (http)
+2019-04-12 08:58:30.696  INFO 3604 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-12 08:58:30.697  INFO 3604 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-12 08:58:30.707  INFO 3604 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_192\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Java\jdk1.8.0_192\bin;C:\Program Files\Java\jdk1.8.0_192\jre\bin;C:\Program Files\MySQL\MySQL Server 5.5\bin;D:\apache-maven-3.6.0\bin;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;E:\BaiduPCS;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;G:\nodejs\;C:\Users\Administrator\AppData\Roaming\npm;.]
+2019-04-12 08:58:30.919  INFO 3604 --- [main] o.a.c.c.C.[.[localhost].[/autowash]      : Initializing Spring embedded WebApplicationContext
+2019-04-12 08:58:30.919  INFO 3604 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2550 ms
+2019-04-12 08:58:31.114  INFO 3604 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2019-04-12 08:58:31.358  INFO 3604 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2019-04-12 08:58:32.786  WARN 3604 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2019-04-12 08:58:32.941  INFO 3604 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-04-12 08:58:32.967  INFO 3604 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-04-12 08:58:32.983  INFO 3604 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-04-12 08:58:33.195  INFO 3604 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createOrderUsingGET_1
+2019-04-12 08:58:33.780  INFO 3604 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8008 (https) 8011 (http) with context path '/autowash'
+2019-04-12 08:58:33.784  INFO 3604 --- [main] com.tianj.autowash.AutoWashApplication   : Started AutoWashApplication in 6.255 seconds (JVM running for 8.276)
+2019-04-12 08:58:40.996  INFO 3604 --- [https-jsse-nio-8008-exec-3] o.a.c.c.C.[.[localhost].[/autowash]      : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-12 08:58:40.997  INFO 3604 --- [https-jsse-nio-8008-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-04-12 08:58:41.012  INFO 3604 --- [https-jsse-nio-8008-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2019-04-12 08:58:41.134 DEBUG 3604 --- [https-jsse-nio-8008-exec-3] com.tianj.autowash.dao.server.ServerDao  : Cache Hit Ratio [com.tianj.autowash.dao.server.ServerDao]: 0.0
+2019-04-12 08:58:41.393 DEBUG 3604 --- [https-jsse-nio-8008-exec-3] c.t.a.d.s.S.getServicePointsByScope      : ==>  Preparing: SELECT id, longitude, latitude FROM svr_service_station WHERE longitude BETWEEN ? AND ? AND latitude BETWEEN ? AND ? 
+2019-04-12 08:58:41.430 DEBUG 3604 --- [https-jsse-nio-8008-exec-3] c.t.a.d.s.S.getServicePointsByScope      : ==> Parameters: 113.0607372522426(Double), 113.18948328495745(Double), 22.88159699764296(Double), 23.0570335468145(Double)
+2019-04-12 08:58:41.468 DEBUG 3604 --- [https-jsse-nio-8008-exec-3] c.t.a.d.s.S.getServicePointsByScope      : <==      Total: 3
+2019-04-12 08:58:41.984 DEBUG 3604 --- [https-jsse-nio-8008-exec-8] com.tianj.autowash.dao.server.ServerDao  : Cache Hit Ratio [com.tianj.autowash.dao.server.ServerDao]: 0.0
+2019-04-12 08:58:41.984 DEBUG 3604 --- [https-jsse-nio-8008-exec-8] c.t.a.d.s.S.getServicePointsByScope      : ==>  Preparing: SELECT id, longitude, latitude FROM svr_service_station WHERE longitude BETWEEN ? AND ? AND latitude BETWEEN ? AND ? 
+2019-04-12 08:58:41.985 DEBUG 3604 --- [https-jsse-nio-8008-exec-8] c.t.a.d.s.S.getServicePointsByScope      : ==> Parameters: 113.22883698364261(Double), 113.35758301635745(Double), 22.717507375372474(Double), 22.8931560211263(Double)
+2019-04-12 08:58:41.995 DEBUG 3604 --- [https-jsse-nio-8008-exec-8] c.t.a.d.s.S.getServicePointsByScope      : <==      Total: 1
+2019-04-12 08:58:50.688 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] com.tianj.autowash.dao.server.ServerDao  : Cache Hit Ratio [com.tianj.autowash.dao.server.ServerDao]: 0.0
+2019-04-12 08:58:50.689 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.dao.server.ServerDao.findById      : ==>  Preparing: SELECT `id`,`name`,`address`,`longitude`,`del_flag`,`latitude`,`create_date`,`update_date` FROM svr_service_station WHERE id=? 
+2019-04-12 08:58:50.689 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.dao.server.ServerDao.findById      : ==> Parameters: f41ad4e8b5a043cbb38e9205463340e2(String)
+2019-04-12 08:58:50.702 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] com.tianj.autowash.dao.device.DeviceDao  : Cache Hit Ratio [com.tianj.autowash.dao.device.DeviceDao]: 0.0
+2019-04-12 08:58:50.703 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.d.device.DeviceDao.findByServerId  : ====>  Preparing: SELECT `id`, `facility_id`, `service_station_id`, `del_flag`, `create_date`, `update_date` FROM dev_device WHERE service_station_id=? 
+2019-04-12 08:58:50.703 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.d.device.DeviceDao.findByServerId  : ====> Parameters: f41ad4e8b5a043cbb38e9205463340e2(String)
+2019-04-12 08:58:50.713 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.d.device.DeviceDao.findByServerId  : <====      Total: 1
+2019-04-12 08:58:50.714 DEBUG 3604 --- [https-jsse-nio-8008-exec-4] c.t.a.dao.server.ServerDao.findById      : <==      Total: 1

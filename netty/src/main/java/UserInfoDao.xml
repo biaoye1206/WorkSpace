@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="java.UserInfoDao">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type=".UserInfo">
+        <result column="id" property="id"/>
+        <result column="age" property="age"/>
+        <result column="iphone" property="iphone"/>
+        <result column="gender" property="gender"/>
+        <result column="city" property="city"/>
+        <result column="province" property="province"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="car_number" property="carNumber"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        age,
+        iphone,
+        gender,
+        city,
+        province,
+        nick_name,
+        car_number
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.age != null"> age, </if>
+            <if test="pojo.iphone != null"> iphone, </if>
+            <if test="pojo.gender != null"> gender, </if>
+            <if test="pojo.city != null"> city, </if>
+            <if test="pojo.province != null"> province, </if>
+            <if test="pojo.nickName != null"> nick_name, </if>
+            <if test="pojo.carNumber != null"> car_number, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.age != null"> #{pojo.age}, </if>
+            <if test="pojo.iphone != null"> #{pojo.iphone}, </if>
+            <if test="pojo.gender != null"> #{pojo.gender}, </if>
+            <if test="pojo.city != null"> #{pojo.city}, </if>
+            <if test="pojo.province != null"> #{pojo.province}, </if>
+            <if test="pojo.nickName != null"> #{pojo.nickName}, </if>
+            <if test="pojo.carNumber != null"> #{pojo.carNumber}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO user_info(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.age},
+            #{pojo.iphone},
+            #{pojo.gender},
+            #{pojo.city},
+            #{pojo.province},
+            #{pojo.nickName},
+            #{pojo.carNumber}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE user_info
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.age != null"> age = #{pojo.age}, </if>
+            <if test="pojo.iphone != null"> iphone = #{pojo.iphone}, </if>
+            <if test="pojo.gender != null"> gender = #{pojo.gender}, </if>
+            <if test="pojo.city != null"> city = #{pojo.city}, </if>
+            <if test="pojo.province != null"> province = #{pojo.province}, </if>
+            <if test="pojo.nickName != null"> nick_name = #{pojo.nickName}, </if>
+            <if test="pojo.carNumber != null"> car_number = #{pojo.carNumber} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM user_info
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.age != null"> AND age = #{pojo.age} </if>
+            <if test="pojo.iphone != null"> AND iphone = #{pojo.iphone} </if>
+            <if test="pojo.gender != null"> AND gender = #{pojo.gender} </if>
+            <if test="pojo.city != null"> AND city = #{pojo.city} </if>
+            <if test="pojo.province != null"> AND province = #{pojo.province} </if>
+            <if test="pojo.nickName != null"> AND nick_name = #{pojo.nickName} </if>
+            <if test="pojo.carNumber != null"> AND car_number = #{pojo.carNumber} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM user_info where id = #{id}
+    </delete>
+</mapper>

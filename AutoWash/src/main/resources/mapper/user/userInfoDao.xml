@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.user.UserInfoDao">
+    <sql id="sql_column">
+        `id`,
+        `name`,
+        `phone`,
+        `gender`,
+        `city`,
+        `province`,
+        `car_number`,
+        `nick_name`,
+        `create_date`,
+        `update_date`,
+        `del_flag`
+    </sql>
+
+
+    <insert id="insert">
+        INSERT INTO usr_user_info (`id`,
+                                   `name`,
+                                   `phone`,
+                                   `gender`,
+                                   `city`,
+                                   `province`,
+                                   `nick_name`,
+                                   `car_number`,
+                                   `create_date`,
+                                   `update_date`)
+        VALUES (#{id},
+                #{name},
+                #{phone},
+                #{gender},
+                #{city},
+                #{province},
+                #{nickName},
+                #{carNumber},
+                #{createDate},
+                #{updateDate})
+    </insert>
+
+    <update id="delete">
+        UPDATE usr_user_info
+        SET del_flag = #{DATA_STATUS_DEL}
+        WHERE id = #{id}
+    </update>
+
+    <update id="update">
+        UPDATE usr_user_info
+        SET
+        <if test="name!=null and name!=''">
+            name = #{name},
+        </if>
+        phone = #{phone},
+        gender = #{gender},
+        city = #{city},
+        province = #{province},
+        nick_name = #{nickName},
+        <if test="carNumber!=null and carNumber!=''">
+            car_number = #{carNumber},
+        </if>
+        update_date = #{updateDate}
+        WHERE id = #{id}
+    </update>
+
+    <select id="findById" resultType="userInfo">
+        SELECT
+          <include refid="sql_column"/>
+        FROM usr_user_info
+        WHERE
+          id = #{id} AND del_flag = #{DATA_STATUS_NORMAL}
+    </select>
+
+    <select id="findByPhone" resultType="userInfo">
+        SELECT
+        <include refid="sql_column"/>
+        FROM usr_user_info
+        WHERE phone = #{phone}
+    </select>
+</mapper>

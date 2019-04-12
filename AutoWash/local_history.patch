@@ -1,0 +1,13 @@
+Index: src/main/java/com/tianj/autowash/constant/MsgType.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/tianj/autowash/constant/MsgType.java	(date 1552353874628)
++++ src/main/java/com/tianj/autowash/constant/MsgType.java	(date 1552353874628)
+@@ -27,5 +27,4 @@
+      * 消息应答
+      */
+     public static Integer TYPE_REPLY = 2004;
+-
+ }

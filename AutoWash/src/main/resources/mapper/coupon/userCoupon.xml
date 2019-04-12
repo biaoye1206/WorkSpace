@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tianj.autowash.dao.coupon.UserCouponDao">
+
+    <select id="findValidCouponsByUserId" resultType="userCoupon">
+        SELECT u.id       AS id,
+               title      AS title,
+               amount     AS amount,
+               discount   AS discount,
+               type       AS type,
+               valid_date AS valid_date
+        FROM usr_coupon AS u
+                 JOIN sys_coupon AS s ON u.sys_coupon_id = s.id
+        WHERE NOW()
+            <![CDATA[
+                <= date_add(u.create_date,INTERVAL s.valid_date DAY)
+            ]]>
+          AND usr_user_id = #{userId}
+    </select>
+</mapper>

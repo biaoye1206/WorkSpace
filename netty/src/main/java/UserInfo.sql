@@ -1,0 +1,18 @@
+-- auto Generated on 2019-03-21 09:36:38 
+-- DROP TABLE IF EXISTS `user_info`; 
+CREATE TABLE user_info(
+    `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+    `age` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '用户姓名',
+    `iphone` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '电话',
+    `gender` INTEGER(12) NOT NULL DEFAULT -1 COMMENT '性别',
+    `city` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '城市',
+    `province` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '省',
+    `nick_name` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '用户呢称',
+    `car_number` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '车牌号',
+    PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT 'user_info';
+
+
+ALTER TABLE user_info
+ADD COLUMN `age` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '用户姓名' AFTER `id`,
+ADD COLUMN `iphone` VARCHAR(50) NOT NULL DEFAULT '' COMMENT '电话' AFTER `age`;
