@@ -195,7 +195,7 @@ public class OrderServiceImpl extends BaseSupport implements OrderService {
         // 商户订单号
         body.put("out_trade_no", outTradeNo);
         // 标价金额 (分)
-        body.put("total_fee", String.valueOf((int) (9.9 * 100)));
+        body.put("total_fee", String.valueOf((int) (0.01 * 100)));
         // 终端IP
         body.put("spbill_create_ip", DataTools.getLocalAddress());
         // 通知地址

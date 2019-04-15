@@ -76,10 +76,10 @@ public class DataTransfer implements Serializable {
     @Override
     public String toString() {
         return "DataTransfer{" +
-                "devicesId='" + devicesId + '\'' +
-                ", type=" + type +
-                ", timestamp='" + timestamp + '\'' +
-                ", data=" + data +
-                '}';
+            "devicesId='" + devicesId + '\'' +
+                    ", type=" + type +
+                    ", timestamp='" + timestamp + '\'' +
+                    ", data=" + data +
+                    '}';
     }
 }
