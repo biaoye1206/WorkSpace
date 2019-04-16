@@ -27,7 +27,7 @@ public class ServerServiceImpl extends BasicServiceImpl<Server, ServerDao> imple
         List<Map<String, Object>> points = dao.getServicePointsByScope(souLon, souLat, norLon, norLat);
         for (Map<String, Object> point : points) {
             point.put("zIndex", 0);
-            point.put("iconPath", "/image/2.png");
+            point.put("iconPath", "/image/3.png");
         }
         return points;
     }

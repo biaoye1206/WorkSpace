@@ -2,12 +2,12 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://localhost:3306/auto_wash?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
-      # url: jdbc:mysql://119.23.182.172:3306/auto_wash
-      #username: auto_wash
-      #password: tj0332
-      username: root
-      password: tj0332*
+      # url: jdbc:mysql://localhost:3306/auto_wash?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://119.23.182.172:3306/auto_wash
+      username: auto_wash
+      password: tj0332
+      #username: root
+      #password: tj0332*
     type: com.alibaba.druid.pool.DruidDataSource
 
 #ehcache缓存
